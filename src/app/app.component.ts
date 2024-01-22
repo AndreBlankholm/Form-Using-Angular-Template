@@ -1,22 +1,25 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
-
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-
   title = 'Form-Using-Angular-template';
 
-
-  
+    username ="";
+  defaultQuestion = 'basic';
+  email = '';
+  password = null;
 
   onSubmit(form: any) {
     console.log(form);
   }
 
+  dropDownMenuChoice(feature: string) {
+    switch (feature) {
+    }
+  }
 }
