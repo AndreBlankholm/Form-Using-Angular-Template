@@ -1,0 +1,16 @@
+.container {
+  margin-top: 30px;
+}
+.form-group {
+    margin-top: 20px;
+}
+
+/* This is the color controls for validation */
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+  justify-content: center;
+}
+
+.help-block-email {
+    color: red;
+}

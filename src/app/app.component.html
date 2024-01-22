@@ -20,26 +20,30 @@
             class="form-control"
             ngModel
             name="username"
+            required
           />
-          <div></div>
+          
           <!-- email, and should not be empty plus valid-->
-          <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              class="form-control"
-              ngModel
-              name="email"
-              required
-              email
-              #email="ngModel"
-            />
+          <label for="email form-group">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            ngModel
+            name="email"
+            required
+            email
+            #email="ngModel"
+          />
         </div>
+        <span class="help-block-email" *ngIf="!email.valid && email.touched"
+              >Please enter a valid email!</span
+            >
         <div class="form-group">
           <label for="secret">Please discribe your overall skill</label>
-          <select 
+          <select
             id="options"
-            class="form-control placholder"
+            class="form-select placholder"
             [ngModel]="defaultQuestion"
             name="dropdown"
             ngModel=""
@@ -50,11 +54,16 @@
             <option value="pro">Pro</option>
           </select>
         </div>
-          <div>
-            <label for="password">Password Placeholder Here</label><!-- need to be touch and val in order to enter password-->
-          </div>
-        
-        <button class="btn btn-danger" type="submit">Click to submit</button>
+        <div class="form-group">
+         <textarea 
+         name="password"
+          id="" 
+          cols="1"
+          class="form-control"
+           ></textarea>
+        </div>
+
+        <button class="btn btn-danger form-group" type="submit">Click to submit</button>
       </form>
     </div>
   </div>
