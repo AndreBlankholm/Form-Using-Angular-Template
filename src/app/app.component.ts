@@ -9,13 +9,14 @@ import { NgForm } from '@angular/forms';
 export class AppComponent {
   title = 'Form-Using-Angular-template';
 
-    username ="";
+  username = '';
   defaultQuestion = 'basic';
   email = '';
-  password = null;
+  password = '';
 
   onSubmit(form: any) {
     console.log(form);
+    
   }
 
   dropDownMenuChoice(feature: string) {
