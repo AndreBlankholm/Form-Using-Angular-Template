@@ -9,45 +9,52 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="onSubmit(formInfo)" #formInfo="ngForm">
+      <form (ngSubmit)="onSubmit()" #formInfo="ngForm">
         <div class="form-group">
           <!-- adding a form group for first set of verificatons email-->
           <!--name email dropdown with options-->
-          <label for="username">User Name</label>
-          <input
-            type="text"
-            id="username"
-            class="form-control"
-            ngModel
-            name="username"
-            required
-          />
-          
-          <!-- email, and should not be empty plus valid-->
-          <label for="email form-group">Email</label>
-          <input
-            type="email"
-            id="email"
-            class="form-control"
-            ngModel
-            name="email"
-            required
-            email
-            #email="ngModel"
-          />
+          <div>
+            <label for="username">User Name</label>
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              ngModel
+              name="username"
+              required
+              #username = "ngModel"
+            />
+          </div>
+          <span class="help-block" *ngIf="!username.valid && username.touched"
+          >Please enter a valid user name!</span
+        >
+          <div>
+            <!-- email, and should not be empty plus valid-->
+            <label for="email form-group">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              ngModel
+              name="email"
+              required
+              #email="ngModel"
+            />
+          </div>
         </div>
-        <span class="help-block-email" *ngIf="!email.valid && email.touched"
-              >Please enter a valid email!</span
-            >
+        <span class="help-block" *ngIf="!email.valid && email.touched"
+          >Please enter a valid email!</span
+        >
         <div class="form-group">
-          <label for="secret">Please discribe your overall skill</label>
+          <label for="skillset">Please rate your overall skill</label>
           <select
             id="options"
             class="form-select placholder"
             [ngModel]="defaultQuestion"
             name="dropdown"
-            ngModel=""
+            ngModel
             dropdown
+            #skillset = "ngModel"
           >
             <option value="basic">Basic</option>
             <option value="advanced">Advanced</option>
@@ -55,17 +62,36 @@
           </select>
         </div>
         <div class="form-group">
-         <textarea 
-         name="password"
-          id="password" 
-          cols="1"
-          class="form-control"
-          ngModel
-           ></textarea>
+          <label for="password">Please enter your a password</label>
+          <textarea
+            name="password"
+            type="password"
+            id="password"
+            cols="1"
+            class="form-control"
+            ngModel
+            required
+            #password = "ngModel"
+          ></textarea>
+          <span class="help-block" *ngIf="!password.valid && password.touched"
+          >Please enter a valid password!</span
+        >
         </div>
 
-        <button class="btn btn-danger form-group" type="submit">Click to submit</button>
+        <button class="btn btn-danger form-group" type="submit" [disabled]="!formInfo.valid" >
+          Click to submit
+        </button>
       </form>
+    </div>
+    <div class="row container-b" *ngIf="submitted">
+      <div class="col-xs-12" >
+        <h2>It Works!</h2>
+        <p>User Name: {{user.username}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Overall Skill Rating: {{user.dropDown}}</p>
+        <p>Your personal passowrd is: {{user.password}}</p>
+
+      </div>
     </div>
   </div>
 </div>
